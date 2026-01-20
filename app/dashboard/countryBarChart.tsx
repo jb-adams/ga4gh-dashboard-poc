@@ -7,20 +7,12 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import { Bar } from 'react-chartjs-2';
 import { type GA4GHServerImplementationList } from "~/types/GA4GHServerImplementationList";
 
-interface ServerTypeBarChart {
+interface CountryBarChart {
     serverImplementations: GA4GHServerImplementationList
 }
 
 interface ChartData {
-    htsget: number,
-    refget: number,
-    rnaget: number,
-    drs: number,
-    trs: number,
-    wes: number,
-    tes: number,
-    beacon: number,
-    dataconnect: number
+    [key: string]: number
 }
 
 const divStyle = {
@@ -28,26 +20,18 @@ const divStyle = {
     marginBottom: '50px'
 }
 
-export default function ServerTypeBarChart({serverImplementations}: ServerTypeBarChart) {
-    const chartData: ChartData = {
-        htsget: 0,
-        refget: 0,
-        rnaget: 0,
-        drs: 0,
-        trs: 0,
-        wes: 0,
-        tes: 0,
-        beacon: 0,
-        dataconnect: 0
-    }
+export default function CountryBarChart({serverImplementations}: CountryBarChart) {
+    const chartData: ChartData = {}
 
     const incrementChartData = (str: keyof typeof chartData) => {
+        if (!(str in chartData)) {
+            chartData[str] = 0;
+        }
         chartData[str]++;
     };
 
-
     serverImplementations.data.forEach(item => {
-        incrementChartData(item.type);
+        incrementChartData(item.country);
     })
 
     const labels: string[] = [];
@@ -68,7 +52,7 @@ export default function ServerTypeBarChart({serverImplementations}: ServerTypeBa
     return (
         <div style={divStyle}>
             <Stack width="full" gap="5">
-                <Heading size="lg">Count of GA4GH Servers by Server Type</Heading>
+                <Heading size="lg">Count of GA4GH Servers by Country</Heading>
                 <Bar data={data}/>
             </Stack>
             <Separator />

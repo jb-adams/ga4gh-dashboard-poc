@@ -5,8 +5,8 @@ import { Dashboard } from "../dashboard/dashboard";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "GA4GH Analytics Dashboard PoC" },
+    { name: "description", content: "GA4GH Analytics Dashboard PoC" },
   ];
 }
 

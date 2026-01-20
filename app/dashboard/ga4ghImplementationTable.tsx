@@ -15,7 +15,8 @@ import {
 import { type GA4GHServerImplementationList } from '../types/GA4GHServerImplementationList';
 
 const divStyle = {
-  margin: '25px'
+    marginTop: '50px',
+    marginBottom: '50px'
 }
 
 interface Ga4ghImplementationTable {
@@ -34,7 +35,6 @@ export default function Ga4ghImplementationTable({serverImplementations}: Ga4ghI
         <div style={divStyle}>
           <Stack width="full" gap="5">
             <Heading size="lg">GA4GH Server Implementations</Heading>
-
             <Table.Root size="sm" variant="outline" striped>
               <Table.Header>
                 <Table.Row>
