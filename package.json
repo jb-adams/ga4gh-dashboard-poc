@@ -6,7 +6,12 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "docker-build": "docker build . -t jbadams/ga4gh-dashboard-poc:latest",
+    "docker-run": "docker run --name ga4gh-dashboard-poc --rm -p 3000:3000 jbadams/ga4gh-dashboard-poc:latest",
+    "docker-push": "docker push jbadams/ga4gh-dashboard-poc:latest",
+    "docker-build-run": "npm run docker-build && npm run docker-run",
+    "docker-build-push": "npm run docker-build && npm run docker-push"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.31.0",
